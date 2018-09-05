@@ -1,0 +1,141 @@
+\section{Abbildungen}
+Eine Abbildung $f:X\to Y$ ist eine Vorschrift, die jedem $x\in X$ eindeutig ein bestimmtes
+$y=f(x)\in Y$ zuordnet. $y$ ist das \emph{Bild} von $x$ und $x$ das \emph{Urbild} von $y$.
+Für eine Abbildung gilt, dass jedes Element der Urmenge $X$ genau auf ein $y\in Y$ abbildet, es müssen aber nicht alle Elemente aus $Y$ angenommen werden bzw. darf auch mehrfach angenommen werden (rechtseindeutig, linksvollständig).\\
+Als Relation:\\
+$f\subseteq A\times B$ mit $f=\{(a,f(a))\mid a\in A\wedge f(a)\in B\}$
+\subsection*{Funktionen}
+Sei $f\subseteq A\times B$ linkseindeutige und rechtsvollständige Relation.\\
+$F$ ist linksvollständig, wenn gilt $\forall a\in A\exists b\in B:(a,b)\in R$.\\
+$F$ ist rechtseindeutig, wenn gilt $\forall a\in A\forall b_1,b_2\in B:(a,b_1)\in R\wedge
+(a,b_2)\in R\Rightarrow b_1=b_2$.
+\subsection*{Bild, Urbild}
+Sei $f:A\to B$ und $M\subseteq A$.\\
+Das \emph{Bild} von $M$ unter $f$ ist die Menge $f(M):=\{f(x)\mid x\in M\}$.\\
+Das \emph{Urbild} einer Teilmenge $N\subseteq B$ heißt $f^{-1}(N):=\{a\in A\mid f(a)\in N\}$.
+\subsection*{Eigenschaften von Abbildungen}
+\emph{Injektivität:}\\
+$\forall x,y\in X: f(x)=f(y)\Rightarrow x=y$\\
+Jedes $y\in Y$ wird höchstens einmal (oder garnicht) getroffen:
+
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=50pt, minimum width=30pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=15pt of a, my dot=$b$] {};
+\node (c) [below=15pt of b, my dot=$c$] {};
+
+\node (d) [right=40pt of a, my dot=$d$] {};
+\node (e) [right=40pt of b, my dot=$e$] {};
+\node (f) [right=40pt of c, my dot=$f$] {};
+\node (g) [below=15pt of f, my dot=$g$] {};
+
+\foreach \i/\j in {a/e,b/d,c/g}
+  \draw [->, shorten >=2pt] (\i) -- (\j);
+\node [fit=(a) (b) (c), group=$X$] {};
+\node [fit=(d) (e) (f) (g), group=$Y$] {};
+\end{tikzpicture}
+%\newpage
+
+\emph{Surjektivität:}\\
+$\forall y\in Y\exists x\in X:f(x)=y$\\
+Jedes $y\in Y$ wird mindestens einmal getroffen:
+
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=50pt, minimum width=30pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=15pt of a, my dot=$b$] {};
+\node (c) [below=15pt of b, my dot=$c$] {};
+\node (d) [below=15pt of c, my dot=$d$] {};
+
+\node (e) [right=40pt of a, my dot=$e$] {};
+\node (f) [right=40pt of b, my dot=$f$] {};
+\node (g) [right=40pt of c, my dot=$g$] {};
+
+\foreach \i/\j in {a/e,b/f,c/g,d/g}
+  \draw [->, shorten >=2pt] (\i) -- (\j);
+\node [fit=(a) (b) (c) (d), group=$X$] {};
+\node [fit=(e) (f) (g), group=$Y$] {};
+\end{tikzpicture}
+
+\emph{Bijektivität:}\\
+Jedem $x\in X$ wird genau ein $y\in Y$ zugeordnet und jedem $y\in Y$ genau ein $x\in X$:
+
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=50pt, minimum width=30pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=15pt of a, my dot=$b$] {};
+\node (c) [below=15pt of b, my dot=$c$] {};
+\node (d) [below=15pt of c, my dot=$d$] {};
+
+\node (e) [right=40pt of a, my dot=$e$] {};
+\node (f) [right=40pt of b, my dot=$f$] {};
+\node (g) [right=40pt of c, my dot=$g$] {};
+\node (h) [right=40pt of d, my dot=$h$] {};
+
+\foreach \i/\j in {a/e,b/h,d/g,c/f}
+  \draw [->, shorten >=2pt] (\i) -- (\j);
+\node [fit=(a) (b) (c) (d), group=$X$] {};
+\node [fit=(e) (f) (g) (h), group=$Y$] {};
+\end{tikzpicture}
+
+\emph{Beispiel für Abbildung}, die injektiv aber nicht surjektiv ist: Sei $f:\mathbb{N}\to\mathbb{N}$. Dann ist $f(n)=n+1$ injektiv, da $f(x)=f(y)\Leftrightarrow x+1=y+1$ gelten muss, was nur gilt, wenn $x=y$. $f$ ist nicht surjektiv da $0$ kein Urbild.
+\subsection*{Komposition}
+Die \emph{Komposition} (Hintereinanderausführung) zweier Abbildungen $f:A\to B$ und\\
+$g:B\to C$ ist $a\mapsto (g\circ f)(a)=g(f(a)),\quad a\in A$
+
+\begin{tikzpicture}
+\node at (0,0) (a) {$A$};
+\node[right =1cm of a]  (b){$B$};
+\node[right =1cm of b]  (c){$C$};
+\draw[->, shorten >=2pt] (a) --node[above]{$f$} (b);
+\draw[->, shorten >=2pt] (b) --node[above]{$g$} (c);
+\draw[->, shorten >=2pt] (a) edge[bend right=30]node[below]{$g\circ f$} (c);
+\end{tikzpicture}
+
+Es gilt $(h\circ g)\circ f=h\circ (g\circ f)$. Außerdem gilt:
+Die Komposition von injektiven Abbildungen ist injektiv, die von surjektiven Abbildungen ist surjektiv und die von bijektiven Abbildungen ist bijektiv.
+\subsection*{Identität, Umkehrabbildung}
+Die Abbildung $id_A:A\to A$ mit $id_A(a)=a$ heißt \emph{Identität}.\\
+Sei $f:A\to B$ bijektive Abbildung. Dann existiert zu $f$ stets eine Abbildung $g$ mit 
+$g\circ f=id_A$ und $f\circ g=id_B$. $g$ heißt die zu $f$ \emph{inverse Abbildung} ($f^{-1}$).
+Es gilt $f^{-1}(f(a))=a$ und $f(f^{-1}(b))=b$.
+\subsection*{Mächtigkeit von Mengen, Abzählbarkeit}
+\emph{Gleichmächtige Mengen:}\\
+Seien $M$ und $N$ zwei Mengen. $M$ und $N$ heißen gleichmächtig, wenn es eine bijektive
+Abbildung $f:M\to N$ gibt ($M\cong N$).\\
+\emph{Endliche Mengen:}\\
+Eine Menge $M$ heißt endlich, wenn $M=\emptyset$ oder es für ein $n\in\mathbb{N}$ eine
+bijektive Abbildung $b:M\to\mathbb{N}_n$ gibt.\\
+\emph{Unendliche Mengen:}\\
+Eine Menge $M$ heißt unendlich, wenn $M$ nicht endlich.\\
+\emph{Abzählbare Mengen:}\\
+Eine Menge $M$ heißt abzählbar, wenn $M$ endlich oder es gibt bijektive
+Abbildung $b:M\to\mathbb{N}$.\\
+\emph{Abzählbar unendliche Mengen:}\\
+Eine Menge $M$ heißt abzählbar unendlich, wenn $M$ abzählbar und $M$ unendlich.\\
+\emph{Überabzählbare Mengen:}\\
+Eine Menge $M$ heißt überabzählbar, wenn $M$ nicht abzählbar.\\
+\emph{Spezielle endliche Mengen:}\\
+Sei $n\in\mathbb{N}$. Dann ist $\mathbb{N}_n:=[n]:=\{1,...,n\}$ die Menge der ersten
+$n$ natürlichen Zahlen.\\
+\emph{Beispiele:}\\
+$|\{a,b,c\}|=3=|\{x,y,11\}|$\\
+$|\mathbb{N}|=|\mathbb{R}|=|\mathbb{N}\times\mathbb{N}|$
+\subsection*{Kardinalität}
+Anzahl der Elemente einer Menge. Zwei Mengen haben gleiche Kardinalität, wenn
+sie gleichmächtig sind.
+\subsection*{Beispielbeweis}
+\emph{Zu zeigen:} $|\mathbb{N}|=|\mathbb{N}\times\mathbb{N}|$\\
+\emph{Beweis.} Wir betrachten $f:\mathbb{N}\to\mathbb{N}\times\mathbb{N}$ mit
+$f(n):=(1,n)$ und $g:\mathbb{N}\times\mathbb{N}\to\mathbb{N}$ mit $g(n,m):=2^n\cdot 3^m$.
+Beide sind injektiv, also $\mathbb{N}\cong\mathbb{N}\times\mathbb{N}$, also
+$|\mathbb{N}|=|\mathbb{N}\times\mathbb{N}|$.

@@ -1,0 +1,42 @@
+\section{Algebraische Strukturen}
+\subsection*{Monoid}
+Ein Monoid ist ein Tupel $(M,*,e)$ bestehend aus einer Menge $M$, einer zweistelligen
+Verknüpfung $*:M\times M\to M,\quad (a,b)\mapsto a*b$ und einem neutralem Element $e\in M$.
+Außerdem muss gelten:\\
+Assoziativität:\\
+(M1) $\forall a,b,c\in M:(a*b)*c=a*(b*c)$\\
+neutrales Element:\\
+(M2) $\forall a\in M:e*a=a*e=a$\\
+\emph{Beispiel:}\\
+$(\mathbb{N}_0,+,0)$ ist Monoid\\
+$(\mathbb{N},\cdot,1)$ ist Monoid
+\subsection*{Gruppe}
+Eine Gruppe ist ein Tupel $(G,*,e,a^{-1})$ bestehend aus einer Menge $G$, einer zweistelligen Verknüpfung $*:G\times G\to G,\quad (a,b)\mapsto a*b$, einem neutralem Element $e\in G$ und einem inversen Element $a^{-1}\in G$.
+Außerdem muss gelten:\\
+Abgeschlossenheit:\\
+(G1) $\forall a,b\in G:(a*b)\in G$\\
+Assoziativität:\\
+(G2) $\forall a,b,c\in G:(a*b)*c=a*(b*c)$\\
+neutrales Element:\\
+(G3) $\forall a\in G:e*a=a*e=a$\\
+inverses Element:\\
+(G4) $\forall a\in G\exists a^{-1}\in G:a*a^{-1}=a^{-1}*a=e$\\
+Für abelsche Gruppe:\\
+Kommutativität:\\
+(G5) $\forall a,b\in G:a*b=b*a$\\
+\emph{Beispiel:}\\
+$(\mathbb{Z},+,0,-a)$ ist Gruppe\\
+$(\mathbb{Q}\setminus\{0\},\cdot,1,\frac{1}{a})$ ist Gruppe
+\subsection*{Körper}
+Ein Körper ist ein Tupel $(K,+,\cdot)$, bestehend aus einer Menge $K$ und zwei 
+zweistelligen Operationen $+$ und $\cdot$ auf $K$.\\
+Es muss gelten:\\
+(K1) $(K,+)$ ist abelsche Gruppe mit neutralem Element $0$.\\
+(K2) $(K\setminus \{0\},\cdot)$ ist abelsche Gruppe mit neutralem Element $1$.\\
+(K3) Distributivität:\\
+$\forall a,b,c\in K:a\cdot (b+c)=a\cdot b+a\cdot c$\\
+\emph{Beispiel:}\\
+$(\mathbb{Q},+,\cdot)$ ist Körper\\
+$(\mathbb{R},+,\cdot)$ ist Körper
+%\subsection*{Schaltfunktionen}
+%\subsection*{Boolsche Algebra}

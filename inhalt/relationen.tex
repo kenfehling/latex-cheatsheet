@@ -1,0 +1,63 @@
+\section{Relationen}
+\subsection*{Binäre Relation}
+Eine binäre Relation $R$ ist eine Menge von Paaren $(a,b)\in A\times B$.\\
+$aRb\Leftrightarrow (a,b)\in R$ bzw. $a(\neg R)b\Leftrightarrow (a,b)\notin R$\\
+\emph{Beispiele:}\\
+Teilerrelation ($nTm$): $P_3:=\{(n,m+3)\mid n,m\in\mathbb{N}\}=\{(1,4),(2,5),(3,6),...\}$\\
+Relation $\subset$ über $\mathcal{P}(M)$ für $M=\{1,2\}$:\\
+$\{(\emptyset ,\{1\}),(\emptyset ,\{2\}),(\emptyset ,\{1,2\}),(\{1\},\{1,2\}),\\(\{2\} ,\{1,2\})\}$
+\subsection*{Inverse Relation}
+Sei $R\subseteq A\times B$. Die inverse Relation zu $R$ ist $R^{-1}=\{(y,x)\in B\times A\mid (x,y)\in R\}$. Also ist $R^{-1}\subseteq B\times A$.\\
+\emph{Beispiel:} Sei $R=\{(1,a),(1,c),(3,b)\}$ dann ist $R^{-1}=\{(a,1),(c,1),(b,3)\}$
+\subsection*{Komposition}
+Seien $R\subseteq M_1\times M_2$ und $S\subseteq M_2\times M_3$ zweistellige Relationen.
+Die Verknüpfung $(R\circ S)\subseteq (M_1\times M_3)$ heißt Komposition der Relationen $R,S$.\\
+$R\circ S:=\{(x,z)\mid\exists y\in M_2:(x,y)\in R\wedge (y,z)\in S\}$\\
+\emph{Beispiel:} Sei $R=\{(1,2),(2,5),(5,1)\}$, dann ist $R^2=R\circ R=\{(1,5),(2,1),(5,2)\}$\\
+Sei $R\subseteq\mathbb{N}\times\mathbb{N}$ mit $(n,m)\in R\Leftrightarrow m=3n$ und
+$S\subseteq\mathbb{N}\times\mathbb{Z}$ mit $(n,z)\in S\Leftrightarrow z=-n$. Dann ist $R\circ S=\{(n,z)\mid z=-3n\}\subseteq\mathbb{N}\times\mathbb{Z}$
+\subsection*{Eigenschaften von Operationen}
+$(R\cup S)^{-1}=R^{-1}\cup S^{-1}$\\
+$(R\cap S)^{-1}=R^{-1}\cap S^{-1}$\\
+$(R\circ S)^{-1}=S^{-1}\circ R^{-1}$\\
+$(R\cap S)\circ T\subseteq (R\circ T)\cap (S\circ T)$\\
+$T\circ (R\cap S)\subseteq (T\circ R)\cap (T\circ S)$\\
+$(R\cup S)\circ T = (R\circ T)\cup (S\circ T)$\\
+$T\circ (R\cup S) = (T\circ R)\cup (T\circ S)$
+\subsection*{Eigenschaften von Relationen}
+Reflexiv: $\forall a\in A:(a,a)\in R$\\
+Symmetrisch: $\forall a,b\in A:(a,b)\in R\Rightarrow (b,a)\in R$\\
+Antisymm.: $\forall a,b\in A:(a,b)\in R\wedge (b,a)\in R\Rightarrow a=b$\\
+Transitiv: $\forall a,b,c\in A:(a,b)\in R\wedge (b,c)\in R\Rightarrow (a,c)\in R$\\
+Total: $\forall a,b \in A: (a,b)\in R\vee (b,a)\in R$\\
+Irreflexiv: $\forall a\in A: (a,a)\notin R$\\
+Asymm.: $\forall a,b\in A:(a,b)\in R\Rightarrow (b,a)\notin R$\\
+Alternativ: $\forall a,b\in A:(a,b)\in R\oplus (b,a)\in R$\\
+Rechtseind.: $\forall a\in A:(a,b)\in R\wedge (a,c)\in R\Rightarrow b=c$\\
+Linkseind.: $\forall a\in A:(b,a)\in R\wedge (c,a)\in R\Rightarrow b=c$\\
+Eindeutig: $R$ ist recht- und linkseindeutig.\\
+Linkstotal: $\forall a\in A\exists b\in B:(a,b)\in R$\\
+Rechtstotal: $\forall b\in B\exists a\in A:(a,b)\in R$
+\subsection*{Äquivalenzrelation}
+Ist eine Relation $\sim$ reflexiv, symmetrisch und transitiv, heißt sie Äquivalenzrelation.
+\subsection*{Äquivalenzklassen}
+Gegeben eine Äquivalenzrelation $R$ über der Menge $A$.
+Dann ist für $a\in A$: $[a]_R=\{x\mid (a,x)\in R\}$ die Äquivalenzklasse von $a$.\\
+(Äquivalente Elemente kommen in die gleiche Menge)\\
+\emph{Beispiel (Restklassen):}\\
+$[4]=\{n\mid n\mod 3=4 \mod 3\}=[1]$\\
+$[5]=\{n\mid n\mod 3=5 \mod 3\}=[2]$\\
+$[6]=\{n\mid n\mod 3=6 \mod 3\}=[3]$
+\subsection*{Zerlegungen, Partition}
+Eine Zerlegung (Partition) $\mathcal{Z}$ ist eine Einteilung von $A$ in nicht leere, paarweise
+elementfremde Teilmengen, deren Vereinigung mit $A$ übereinstimmt.\\
+\emph{Beispiel:} Sei $A=\{1,2,3,...,10\}$. Dann ist $\mathcal{Z_1}=\{\{1,3\},\{2,5,9\},\{4,10\},\{6,7,8\}\}$
+\subsection*{Abschluss einer Relation}
+$R_\phi^*$ bildet die fehlenden Relationen mit der Eigenschaft $\phi$, also alle Kombinationen aus $A$, die noch nicht in $R$ sind.\\
+\emph{Beispiel:}\\
+Sei $A=\{1,2,3\}$ und $R=\{(1,2),(2,3),(3,3)\}$. 
+Dann ist $R_{refl}^*=R\cup\{(1,1),(2,2)\}$,\\
+$R_{sym}^*=R\cup\{(2,1),(3,2)\}$,
+$R_{tra}^*=R\cup\{(1,3)\}$
+\subsection*{Halbordunung}
+Eine Relation $R$, die reflexiv, antisymmetrisch und transitiv ist.

@@ -1,0 +1,64 @@
+\section{Graphenalgorithmen}
+\subsection*{Kantenlänge}
+Jeder Kante wird eine reelle Zahl zugeordnet, die wir als Länge dieser Kante bezeichnen.
+Man spricht dann von einem Graphen mit bewerteten Kanten
+\subsection*{Algorithmus von Dijkstra}
+Dient der \emph{Bestimmung kürzester Wege} von einem fest vorgegebenen Knoten zu allen anderen Knoten
+in einem schlichten, zusammenhängenden, gerichteten Graphen mit endlicher Knotenmenge und nicht-negativ bewerteten Kanten
+und liefert einen Weg mit einer minimalen Gesamtlänge.\\
+\emph{Algorithmus}\\
+Schreibe Tabelle mit Knoten, Entfernung, Vorgänger, OK\\
+Setze alle Entf. auf $\infty$ außer $Start=0$\\
+Setze Vorg. von $Start=Start$\\
+Setze alle $OK=f$\\
+Starte Algorithmus:\\
+Wiederhole:\\
+	Suche unter den Entfernungen die kleinste$=j$, die $OK=f$ ($\Rightarrow$ beim Start also $Start$ selbst)\\
+		Setze $j=t$\\
+		Suche alle Nachbarknoten $k$ von $j$, die noch nicht $t$ sind.\\
+		Wenn die Entfernung größer als $j+k$ setze neue Entf. und setze neuen Vorgänger.\\	
+Solange bis noch Knoten mit $OK=f$
+\subsection*{Flussprobleme}
+Modellierung von Transport von Gütern (Strom, Container etc.) entlang der Kanten.\\
+$c(e_{ij})=c_{ij}$ ist Kapazität einer Kante. $v_iv_j=e_{ij}$ ist die Menge eines Gutes,
+die entlang der Kante transportiert werden kann.
+\subsection*{Fluss}
+Ein Fluss in $G$ von der Quelle $q=v_1$ zur Senke $s=v_n$ ist eine Funktion $f$, die jeder
+Kante $e_{ij}\in E$ eine nicht-negative rationale Zahl zuordnet.
+\subsection*{Schnitt}
+Seien $X,Y$ bel. Untermengen von Knoten eines Graphen $G$. Dann ist\\
+$A(X,Y)$ die Menge der Kanten, die Knoten aus $X$ mit Knoten $Y$ verbinden.\\
+$A^+(X,Y)$ ist die Menge der Kanten, ausgehend von Knoten aus $X$, die Knoten aus $Y$
+verbinden.\\
+$A^-(X,Y)$ ist die Menge der Kanten, ausgehend von Knoten aus $Y$, die Knoten aus $X$
+verbinden.\\
+Sei $g$ eine Funktion, die den Kanten eines Graphen $G$ nicht-negative Zahlen zuordnet, dann
+gilt $g(X,Y)=\sum_{e\in A^+(X,Y)}g(e)$.\\
+Ein \emph{Schnitt} ist eine Menge von Kanten $A(X,\bar{X})$ mit $q\in X$ und $s\in\bar{X}$.\\
+\emph{Beispiel:}\\
+Wähle $X=\{q=v_1,...\}$ und $\bar{X}=\{...,s=v_n\}$ mit $...$ beliebig. Dann ist $A(X,\bar{X})=\{e_{ij},e_{...}\}$ die Menge der Kanten zwischen $X$ und $\bar{X}$.\\
+$A^+(X,\bar{X})=\{e_{ij},e_{...}\}$ die Menge der Kanten aus $X$.\\
+$A^-(X,\bar{X})=\{e_{ij},e_{...}\}$ die Menge der Kanten in $X$ hinein.\\
+Der \emph{Fluss} von den Knoten in $X$ zu den Knoten in $\bar{X}$ ist dann:\\
+$\sum_{e_{ij}\in A^+(X,Y)}f(e_{ij})-\sum_{e_{ij}\in A^-(X,Y)}f(e_{ij})$ Hierbei steht $f(e_{ij})$ für den Fluss, also der hinteren Zahl im Tupel $(x,y)$ an der Kantenbeschriftung.\\
+Die \emph{Kapazität} bestimmt man aus der vorderen Zahl jenen Tupels wie folgt:\\
+$c(X,\bar{X})=\sum_{e_{ij}\in A^+(X,Y)}c(e_{ij})$\\
+\emph{Hinweis:}\\
+Es gibt $2^n$ mögliche Schnitte wenn $n$ die Anzahl der inneren Knoten ist.
+\subsection*{Maximaler Fluss}
+Ein Fluss $f$, dessen Wert $d$ maximal ist, heißt \emph{maximaler Fluss}.\\
+Ein Fluss dessen Wert $\min\{c(X,\bar{X})\}$ entspricht, ist maximal.
+\subsection*{Vergrößernder Weg}
+Ein ungerichteter Weg von $q$ nach $s$ heißt \emph{vergrößernd}, wenn
+für jede Kante $e_{ij}$ auf dem Weg ihrer Richtung gilt: $f(e_{ij})<c(e_{ij})$
+(Vorwärtskante) bzw. $f(e_{ij})>0$ (Rückwärtskante).
+\subsection*{Algorithmus von Ford und Fulkerson}
+Initialsiere alle Flüsse mit 0.\\
+Wiederhole:\\
+	Suche guten Fluss, der optimal wird und schreibe Tabelle:\\
+	$1) q(\bot,\infty) v_x(+q,Anzahl), ... , s(+v_{...},Anzahl)$\\
+	Trage Fluss nach Komma ein.\\
+Bis:\\
+Es gibt keinen weiteren vergrößernden Fluss.\\
+Antwort: max. Fluss mit $d=...$\\
+\emph{Hinweis:} Nur soviel durchschicken wie benötigt und evtl. größte Flüsse zuerst.

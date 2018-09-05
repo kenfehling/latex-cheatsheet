@@ -1,0 +1,142 @@
+\section{Graphentheorie}
+\subsection*{Gerichteter Graph}
+$G=(V,E)$ wobei $V$ Menge aller Knoten z.B. $V=\{v_0,v_1,v_2,\dots,v_n\}$ und $E\subseteq V\times V$ Menge aller Kanten mit $e=(v,u)$. Hierbei steht $v$ für den Startknoten von $e$ und $u$ ist Endknoten von $e$.\\
+\emph{Hinweis:}\\
+Ist die Kantenmenge $E$ symmetrisch ($(u,v)\in E\wedge (v,u)\in E$) sprechen wir von einem ungerichteten Graphen. In solchen werden keine Schlingen betrachtet.
+\subsection*{Adjazente Knoten}
+Zwei Knoten, die in einem Graphen durch eine Kante verbunden sind, heißen \emph{adjazent} oder \emph{benachbart}.
+\subsection*{Endlicher Graph}
+Ein Graph $G$ heißt endlich, wenn die Knotenmenge $V$ endlich ist.
+\subsection*{Nullgraph (vollst. unverbunden)}
+$G=(V,\emptyset)\Rightarrow$ ohne Kanten
+\subsection*{Vollständiger Graph}
+$G=(V,V\times V)$ ist vollständig (heißt auch $K_n$ wegen $n$ Knoten) und hat Maximalzahl von $n^2$ Kanten $\Rightarrow$ gerichtet und mit Schlingen. Der Ungerichtete $K_n$ hat $\frac{n\cdot (n-1)}{2}$ Kanten, wobei $n$ die Zahl der Knoten ist.\\
+\emph{Beispiel:}\\
+\begin{tikzpicture}[scale=.60,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=3, clockwise];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.60,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=4, clockwise];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.60,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=5, clockwise];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.60,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=6, clockwise];};
+\end{tikzpicture}
+\subsection*{Ungerichteter Graph}
+Ein Graph $G=(V,E)$ ist ungerichtet $\Leftrightarrow E$ ist symmetrisch $\Leftrightarrow (u,v)\in E\wedge (v,u)\in E$. Da hier die Kanten ungerichtet, kann Mengenschreibweise verwendet werden.
+\subsection*{Schlinge}
+Kante mit gleichem Start- und Endknoten. Wird bei ungerichteten Graphen nicht betrachtet.
+\subsection*{Bipartite Graphen}
+Ein ungerichteter Graph ist bipartit, wenn die Knotenmenge $V$ in zwei disjunkte Teilmengen $U,W$ zerlegbar ist, sodass alle Kanten $e\in E$ einen Endpunkt in $U$ und einen anderen in $W$ haben.\\
+\emph{Beispiel:}\\
+\begin{tikzpicture}[scale=.75,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_nm [n=2,m=2];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.75,transform shape]
+\hspace{.3cm}
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_nm [n=3,m=1];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.75,transform shape]
+\hspace{.6cm}
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_nm [n=3,m=2];};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.75,transform shape]
+\hspace{1cm}
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_nm [n=3,m=3];};
+\end{tikzpicture}
+\subsection*{Eulersche Graphen}
+$G$ heißt eulerscher Graph, falls es in $G$ einen geschlossenen Weg gibt, der jede Kante von $G$ enthält.\\
+$G$ ist eulerscher Graph $\Leftrightarrow$ jede Ecke von $G$ hat geraden Grad und $G$ ist zusammenhängend.
+\subsection*{Untergraph}
+Seien $G=(V_G,E_G)$, $H=(V_H,E_H)$ zwei Graphen. $H$ heißt Teilgraph von $G$, wenn $V_H\subseteq V_G$ und $E_H\subseteq E_G$
+(wenn also jede Kante von $H$ auch zu $G$ gehört.)\\
+\emph{Hinweis:}\\
+Der Nullgraph $O_n$ ist Teilgraph jedes Graphen mit $n$ Knoten. Außerdem ist jeder Graph Teilgraph des vollständigen Graphen $K_n$.
+\subsection*{Induzierte Teilgraphen}
+Sei $G=(V,E)$ ein Graph. Ist $V'\subseteq V$ eine Teilmenge der Knotenmenge $V$ von $G$, dann ist der Untergraph oder
+der durch $V'$ induzierte Teilgraph von $G$ der Graph $G[V']=(V',E')$ mit $E'=\{(u,v)\mid u,v\in V'\wedge (u,v)\in E\}$\\
+\emph{Beispiel:}\\
+Ist $G$ ein Graph hat $G[\{2,3,4\}]$ nur die Knoten $2$, $3$ und $4$ und die entsprechenden Kanten.
+\subsection*{Grad eines Knoten}
+Der Ausgrad von $v$ ist die Zahl der Kanten, die $v$ als Startknoten besitzen.
+Der Ingrad von $v$ ist die Zahl der Kanten, die in $v$ enden.
+Ist $G$ ungerichtet stimmen Ausgrad von $v$ und Ingrad von $v$ überein und wird Grad von $v$ genannt.\\
+\emph{Hinweis:}\\
+Sei $G=(V,E)$ gerichteter Graph, dann gilt $\sum_{v\in V} indeg(v)=\sum_{v\in V} outdeg(v)=|E|$.
+Ist $G$ ungerichtet, dann gilt $\sum_{v\in V} deg(v)=2\cdot |E|$.
+\subsection*{Wege}
+Ein Weg von den Knoten $u$ nach $v$ ist eine Folge benachbarter Knoten. Die Länge
+eines Weges ist die Anzahl der Kanten. Ein Weg der Länge $0$ wird als trivialer Weg bezeichnet und besteht nur aus einem Knoten.\\
+\emph{Hinweis:}\\
+Ein Weg heißt geschlossen, wenn seine beiden Endknoten gleich sind.
+\subsection*{Graphzusammenhang}
+Knoten $u$ und $v$ eines ungerichteten Graphen heißen zuammenhängend, wenn es
+einen Weg in $G$ von $u$ nach $v$ gibt.
+\subsection*{Zusammenhangskomponente}
+Ein Graph $G$ heißt zusammenhängend wenn jedes Knotenpaar aus $G$ zusammenhängend ist.\\
+\emph{Hinweis:}\\
+Die Äquivalenzklassen (zusammenhängende Teilgraphen) einer Zusammenhangsrelation $Z$ über einem ungerichteten Graphen $G$ heißen Zusammenhangskomponenten (ZK) von $G$.
+\subsection*{Pfade, Kreise}
+Als \emph{Pfad} werden Wege in einem Graphen bezeichnet, bei denen keine Kante zweimal durchlaufen wird.
+Ein geschlossener Pfad heißt \emph{Kreis}. Bei einem \emph{einfachen Pfad} wird kein Knoten mehrfach durchlaufen.
+Ein geschlossener Pfad, der mit Ausnahme seines Ausgangspunktes einfach ist, heißt \emph{einfacher Kreis}.
+Ein einfacher Kreis durch sämtliche Knoten des Graphen, heißt \emph{Hamiltonscher Kreis}.
+\subsection*{Hamiltonscher Kreis}
+Kann der Zusammenhang eines Graphen $G$ durch die Entnahme eines einzigen Knotens (und
+sämtlicher mit diesem Knoten benachbarter Kanten) zerstört werden, dann besitzt $G$ keinen
+Hamiltonschen Kreis.
+\subsection*{Isomorphe Graphen}
+Zwei Graphen heißen isomorph zueinander, wenn sie strukturell gleich sind.\\
+\emph{Beispiel:}\\
+\begin{tikzpicture}[scale=.62,transform shape]
+\hspace{.5cm}
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=5, clockwise];
+1 -!- 2;
+2 -!- 3;
+3 -!- 4;
+4 -!- 5;
+5 -!- 1;
+};
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.62,transform shape]
+\hspace{.75cm}
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=5, clockwise];
+1 -!- 4;
+1 -!- 3;
+5 -!- 2;
+5 -!- 3;
+4 -!- 2;
+};
+\end{tikzpicture}
+
+\begin{tabular}{c|c|c|c|c|c}
+$v$ & $1$ & $2$ & $3$ & $4$ & $5$ \\ 
+$\phi (v)$ & $1$ & $4$ & $2$ & $5$ & $3$ \\
+\end{tabular}
+\subsection*{Komplementäre Graphen}
+Sei $G=(V,E)$ ein Graph. Dann ist $\bar{G}=(V,(V\times V)\setminus E)$ der Komplementärgraph von $G$.\\
+\emph{Hinweis:}\\
+Ein Graph heißt selbstkomplementär wenn $G$ und $\bar{G}$ isomorph sind.
+%\subsection*{Wälder, Bäume}
+%Ein Graph heißt \emph{zyklenfrei}, wenn er keinen geschlossenen Weg der Länge $\geq 1$ besitzt.
+%Ein ungerichteter Graph heißt \emph{Wald}, wenn er zyklenfrei ist.
+%Ein ungerichteter Graph heißt Baum, wenn er zyklenfrei und zusammenhängend ist.
+%Ein wesentliches Charakteristikum von Bäumen ist die Tatsache, dass jedes Paar von
+%Knoten in einem Baum durch genau einen Weg verbunden ist.
+%Werden in einem Baum Kanten gestrichen, dann entsteht ein Wald
+%Die Knoten eines Baumes vom Grad 1 werden \emph{Blätter} genannt, die Knoten vom Grad
+%größer als 1 heißen \emph{innere Knoten}.
+%Ist $G$ ein zusammenhängender Graph mit $n$ Knoten und $n-1$ Kanten, dann ist $G$ ein
+%Baum.
+%Als \emph{Tiefe eines Knotens} von $T$ wird sein Abstand von der Wurzel bezeichnet.
+%Die Tiefe von $T$ ist die größte Knotentiefe.  Alle Knoten der gleichen Tiefe bilden ein \emph{Knotenniveau}.
+%Als \emph{Kinder eines Knotens} $v$ von $T$ werden sämtliche Knoten bezeichnet, die zu $v$
+%benachbart sind und deren Tiefe die von $v$ um eins übersteigt. $v$ heißt \emph{Vater} seiner Kinder.
+%\subsection*{Vollst. binärer Baum}
+%Ein \emph{vollständiger binärer Baum} ist ein binärer Baum, bei dem jeder innere Knoten
+%genau zwei Kinder hat.
+%Sei $T$ ein vollständiger binärer Baum mit $k$ inneren Knoten.
+%$T$ hat $k+1$ Blätter und insgesamt $2k+1$ Knoten.
+%Sei $d$ die Tiefe von $T$, dann besitzt $T$ insgesamt $\sum_{i=0}^d 2^i=2^{d+1}-1$ Knoten.
